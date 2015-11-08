@@ -8,15 +8,22 @@ use Illuminate\Http\Request; //Required to allow 'Request' type objects
 class BlogController extends Controller {
 	
 	public function getBlog() {
-		return 'List view of blog posts';
+
+		//Retrieve posts in database
+
+		return view('blog.view-blog');
 	}
 
 	public function getNew() {
-		return 'Create new blog post';
+		return view('blog.new-post');
 	}
 
-	public function postPublish() {
-		return 'Publish new blog post';
+	public function postPublish(Request $request) {
+
+		//Add post to database
+
+		$title = $request->input('title');
+		return view('blog.publish')->with('title', $title);
 	}
 
 	public function postDelete() {
@@ -24,6 +31,10 @@ class BlogController extends Controller {
 	}
 
 	public function getPost() {
+		//
+	}
+
+	public function getEdit() {
 		//
 	}
 }
