@@ -32,6 +32,6 @@ class ConnectUsersAndPosts extends Migration
         Schema::table('posts', function (Blueprint $table) {
             $table->dropForeign('posts_user_id_foreign');
             $table->dropColumn('user_id');
-        };
+        });
     }
 }
