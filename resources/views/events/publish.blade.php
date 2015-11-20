@@ -11,4 +11,5 @@
 		<li class="list-group-item">{{$date}}</li>
 		<li class="list-group-item">{{$desc}}</li>
 	</ul>
+	
 @stop

@@ -7,6 +7,7 @@ use Illuminate\Http\Request; //Required to allow 'Request' type objects
 
 class EventsController extends Controller {
 	public function getMilestones() {
+		//Retrive all milestones
 		return view('events.timeline');
 	}
 

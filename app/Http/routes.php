@@ -16,23 +16,33 @@ Route::get('/', function () {
 });
 
 //User authentication routes
-Route::get('/signup', 'UsersController@getSignUp');
-Route::get('/login', 'UsersController@getLogin');
+Route::get('/register', 'Auth\AuthController@getRegister');
+Route::post('/register', 'Auth\AuthController@postRegister');
+Route::get('/login', 'Auth\AuthController@getLogin');
+Route::post('/login', 'Auth\AuthController@postLogin');
+Route::get('/logout', [
+    'middleware' => 'auth',
+    'uses' => 'Auth\AuthController@getLogout'
+    ]);
 
-//Blog routes
-Route::get('/blog', 'BlogController@getBlog');
-Route::get('/blog/new-post', 'BlogController@getNew');
-Route::post('/blog/publish-post', 'BlogController@postPublish');
-Route::post('/blog/post-deleted', 'BlogController@postDelete');
-Route::get('/blog/{id}', 'BlogController@getPost');
-Route::get('/blog/edit/{id}', 'BlogController@getEdit');
+//Login restricted routes
+Route::group(['middleware' => 'auth'], function() {
+    //Blog routes
+    Route::get('/blog', 'BlogController@getBlog');
+    Route::get('/blog/new-post', 'BlogController@getNew');
+    Route::post('/blog/publish-post', 'BlogController@postPublish');
+    Route::post('/blog/post-deleted', 'BlogController@postDelete');
+    Route::get('/blog/{id}', 'BlogController@getPost');
+    Route::get('/blog/edit/{id}', 'BlogController@getEdit');
 
-//Events routes
-Route::get('/milestones', 'EventsController@getMilestones');
-Route::get('/milestones/new-event', 'EventsController@getNew');
-Route::get('/milestones/edit/{id}', 'EventsController@getEdit');
-Route::post('/milestones/publish', 'EventsController@postPublish');
-Route::post('/milestones/event-deleted', 'EventsController@postDelete');
+    //Events routes
+    Route::get('/milestones', 'EventsController@getMilestones');
+    Route::get('/milestones/new-event', 'EventsController@getNew');
+    Route::get('/milestones/edit/{id}', 'EventsController@getEdit');
+    Route::post('/milestones/publish', 'EventsController@postPublish');
+    Route::post('/milestones/event-deleted', 'EventsController@postDelete');
+});
+
 
 
 
@@ -72,3 +82,5 @@ Route::get('/debug', function() {
     echo '</pre>';
 
 });
+
+?>
