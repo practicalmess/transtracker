@@ -14,17 +14,6 @@
 </head>
 <body>
 
-	@if(\Session::has('flash_message'))
-    <div class="alert alert-success">
-        {{ \Session::get('flash_message') }}
-    </div>
-    @endif
-    @if(\Session::has('flash_error'))
-    <div class="alert alert-warning">
-        {{ \Session::get('flash_error') }}
-    </div>
-    @endif
-
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -38,14 +27,26 @@
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	    	@if(Auth::check())
-	    	<li><a href="/logout">Sign out</a></li>
+		    	<li class="navbar-text"><strong>Hi, {{\Auth::user()->name}}!</strong></li>
+		    	<li><a href="/logout">Sign out</a></li>
 			@else
-	    	<li><a href="/login">Sign in</a></li>
-	    	<li><a href="/register">New User</a></li>
+		    	<li><a href="/login">Sign in</a></li>
+		    	<li><a href="/register">New User</a></li>
 	    	@endif
 	    </ul>
 	  </div>
 	</nav>
+
+	@if(\Session::has('flash_message'))
+    <div class="alert alert-success">
+        {{ \Session::get('flash_message') }}
+    </div>
+    @endif
+    @if(\Session::has('flash_error'))
+    <div class="alert alert-warning">
+        {{ \Session::get('flash_error') }}
+    </div>
+    @endif
 
 	<header>
 		@yield('header')

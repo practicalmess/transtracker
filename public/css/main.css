@@ -2,3 +2,51 @@ body {
 	width: 94%;
 	margin: 0 auto;
 }
+
+/*.list-group-item {
+	display: inline-block;
+}
+
+.list-group-item:last-child {
+	width: 100%;
+}*/
+
+textarea.blog-post {
+	height: 210px;
+}
+
+h3.panel-title {
+	font-weight: bold;
+	color: #337ab7;
+	font-size:1.6em;
+	padding-bottom: 10px;
+}
+
+.nav-tabs>li {
+	border: 1px solid #ddd;
+	border-bottom: 0px;
+}
+
+.nav-tabs>li:first-child {
+	border-top-left-radius: 5px;
+}
+
+.nav-tabs>li:nth-child(n+2){
+	border-left: 0px;
+}
+
+.nav-tabs>li:last-child {
+	border-top-right-radius: 5px;
+	border-left: 0px;
+}
+
+.nav-tabs>li:nth-last-child(n+3){
+	padding: 10px 5px;
+}
+
+p.timeline {
+	border: 1px solid #ddd;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 5px;
+}

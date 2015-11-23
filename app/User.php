@@ -16,6 +16,9 @@ class User extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
+    use SoftDeleteingTrait;
+    protected $dates = ['deleted_at'];
+    
     /**
      * The database table used by the model.
      *
@@ -39,5 +42,10 @@ class User extends Model implements AuthenticatableContract,
 
     public function post() {
         return $this->hasMany('\App\Post');
+
+    }
+    public function milestone() {
+        return $this->hasMany('\App\Milestone');
+        
     }
 }

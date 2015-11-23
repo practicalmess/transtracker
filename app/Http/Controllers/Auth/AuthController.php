@@ -72,6 +72,8 @@ class AuthController extends Controller
         ]);
     }
 
+    
+
     /**
      * Log the user out of the application.
      *
@@ -83,4 +85,6 @@ class AuthController extends Controller
         \Session::flash('flash_message','You have been logged out.');
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
+
+
 }

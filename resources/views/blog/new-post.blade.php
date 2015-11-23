@@ -5,10 +5,10 @@
 
 	<form action="/blog/publish-post" method="POST">
 		<input type="hidden" value="{{ csrf_token() }}" name="_token">
-		<input type="text" name="title" placeholder="Title">
+		<input type="text" name="title" placeholder="Title" class="form-control">
 		<br>
-		<textarea name="text"></textarea>
+		<textarea name="text" class="form-control blog-post"></textarea>
 		<br>
-		<input type="submit" value="Post!">
+		<input type="submit" class="btn btn-primary" value="Post!">
 	</form>
 @stop

@@ -7,8 +7,12 @@ use Illuminate\Http\Request; //Required to allow 'Request' type objects
 
 class EventsController extends Controller {
 	public function getMilestones() {
-		//Retrive all milestones
-		return view('events.timeline');
+		$user = \Auth::user();
+		$userId = $user->id;
+
+		$events = \App\Milestone::where('user_id', '=', $userId)->orderBy('date', 'DESC')->get();
+
+		return view('events.timeline')->with('events', $events);
 	}
 
 	public function getNew() {
@@ -21,33 +25,69 @@ class EventsController extends Controller {
 			$request,
 			['date' => 'date_format:m/d/Y']
 			);
-		$type = $request->input('type');
-		if($type=='coming-out') {
+		$type = $request->type;
+		if($type=='Coming Out') {
 			$glyph='star-empty';
-			$title='Coming Out';
-		} elseif($type=='presentation') {
+		} elseif($type=='Presentation') {
 			$glyph='user';
-			$title='Presentation';
-		} elseif($type=='legal') {
+		} elseif($type=='Legal') {
 			$glyph='book';
-			$title='Legal';
-		} elseif($type=='physical') {
+		} elseif($type=='Physical/Medical') {
 			$glyph='heart-empty';
-			$title='Physical/Medical';
 		} else {
 			$glyph='sunglasses';
-			$title='Other';
 		}
 		$date = $request->input('date');
 		$desc = $request->input('description');
 
-		//Add to database
+		$user = \Auth::user();
+		$userId = $user->id;
 
-		return view('events.publish')->with('title', $title)->with('glyph', $glyph)->with('date', $date)->with('desc', $desc);
+		$event = new \App\Milestone();
+		$event->type = $type;
+		$event->glyph = $glyph;
+		$event->date = $request->date;
+		$event->description = $request->description;
+		$event->user_id = $userId;
+
+		$event->save();
+
+		\Session::flash('flash_message','Your milestone was added!');
+		return redirect('/milestones');
 	}
 
 	public function postDelete() {
-		return 'Life Event deleted';
+		return 'Milestone deleted.';
+	}
+
+	public function getEdit($id = null) {
+		$event = \App\Milestone::find($id);
+		$user = \Auth::user();
+
+		if(is_null($event)) {
+			\Session::flash('flash_error','Milestone not found!');
+			return redirect('/milestones');
+		}
+
+		if($event->user_id != $user->id) {
+			\Session::flash('flash_error','Access denied');
+			return redirect('/milestones');
+		}
+
+		return view('events.edit')->with('event',$event);
+	}
+
+	public function postEdit(Request $request) {
+		$event = \App\Milestone::find($request->id);
+
+		$event->type = $request->type;
+		$event->date = $request->date;
+		$event->description = $request->description;
+
+		$event->save();
+
+		\Session::flash('flash_message','Milestone successfully edited!');
+		return redirect('/milestones');
 	}
 
 }

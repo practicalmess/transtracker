@@ -40,20 +40,73 @@ class BlogController extends Controller {
 
 		$post->save();
 
-		$title = $request->input('title');
-		return view('blog.publish')->with('title', $title);
+		\Session::flash('flash_message','Your post was published!');
+		return redirect('/blog');
 	}
 
-	public function postDelete() {
+	public function getDelete($id = null) {
+		$post = \App\Post::find($id);
+		$user = \Auth::user();
 		return 'Delete blog post';
+
+		if(is_null($post)) {
+			\Session::flash('flash_error','Post not found!');
+			return redirect('/blog');
+		}
+
+		if($post->user_id != $user->id) {
+			\Session::flash('flash_error','Access denied');
+			return redirect('/blog');
+		}
+
+		
+		return view()
 	}
 
-	public function getPost() {
-		//
+	public function getPost($id = null) {
+		$post = \App\Post::find($id);
+		$user = \Auth::user();
+
+		if(is_null($post)) {
+			\Session::flash('flash_error','Post not found!');
+			return redirect('/blog');
+		}
+
+		if($post->user_id != $user->id) {
+			\Session::flash('flash_error','Access denied');
+			return redirect('/blog');
+		}
+
+		return view('blog.view-post')->with('post',$post);
 	}
 
-	public function getEdit() {
-		//
+	public function getEdit($id = null) {
+		$post = \App\Post::find($id);
+		$user = \Auth::user();
+
+		if(is_null($post)) {
+			\Session::flash('flash_error','Post not found!');
+			return redirect('/blog');
+		}
+
+		if($post->user_id != $user->id) {
+			\Session::flash('flash_error','Access denied');
+			return redirect('/blog');
+		}
+
+		return view('blog.edit')->with('post',$post);
+	}
+
+	public function postEdit(Request $request) {
+		$post = \App\Post::find($request->id);
+
+		$post->title = $request->title;
+		$post->text = $request->text;
+
+		$post->save();
+
+		\Session::flash('flash_message','Post successfully edited!');
+		return redirect('/blog');
 	}
 }
 

@@ -23,11 +23,11 @@
 		<input type="hidden" value="{{ csrf_token() }}" name="_token">
 		<label for="type">Type</label>
 		<select name="type" class="form-control">
-			<option value="coming-out">Coming Out</option>
-			<option value="presentation">Presentation</option>
-			<option value="legal">Legal</option>
-			<option value="physical">Physical/Medical</option>
-			<option value="other">Other</option>
+			<option value="Coming Out">Coming Out</option>
+			<option value="Presentation">Presentation</option>
+			<option value="Legal">Legal</option>
+			<option value="Physical/Medical">Physical/Medical</option>
+			<option value="Other">Other</option>
 		</select>
 		<br>
 		<label for="date">Date</label>
