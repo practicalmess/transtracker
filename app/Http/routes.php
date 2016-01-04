@@ -31,10 +31,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/blog', 'BlogController@getBlog');
     Route::get('/blog/new-post', 'BlogController@getNew');
     Route::post('/blog/publish-post', 'BlogController@postPublish');
-    Route::post('/blog/post-deleted', 'BlogController@postDelete');
     Route::get('/blog/post/{id}', 'BlogController@getPost');
     Route::get('/blog/edit/{id}', 'BlogController@getEdit');
     Route::post('/blog/edit', 'BlogController@postEdit');
+    Route::get('/blog/delete/{id}', 'BlogController@getDelete');
+    Route::post('/blog/post-deleted', 'BlogController@postDelete');
 
     //Events routes
     Route::get('/milestones', 'EventsController@getMilestones');
@@ -42,7 +43,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/milestones/publish', 'EventsController@postPublish');
     Route::get('/milestones/edit/{id}', 'EventsController@getEdit');
     Route::post('/milestones/edit', 'EventsController@postEdit');
+    Route::get('/milestones/delete/{id}', 'EventsController@getDelete');
     Route::post('/milestones/event-deleted', 'EventsController@postDelete');
+
+    //User profile routes
+    Route::get('/profile', 'ProfileController@getProfile');
 });
 
 

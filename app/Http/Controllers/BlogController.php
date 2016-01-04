@@ -47,7 +47,6 @@ class BlogController extends Controller {
 	public function getDelete($id = null) {
 		$post = \App\Post::find($id);
 		$user = \Auth::user();
-		return 'Delete blog post';
 
 		if(is_null($post)) {
 			\Session::flash('flash_error','Post not found!');
@@ -60,7 +59,15 @@ class BlogController extends Controller {
 		}
 
 		
-		return view()
+		return view('blog.delete')->with('post', $post);
+	}
+
+	public function postDelete(Request $request) {
+		$post = \App\Post::find($request->id);
+		$post->delete();
+
+		\Session::flash('flash_message', 'Post deleted.');
+		return redirect('/blog');
 	}
 
 	public function getPost($id = null) {
@@ -99,6 +106,13 @@ class BlogController extends Controller {
 
 	public function postEdit(Request $request) {
 		$post = \App\Post::find($request->id);
+
+		$this->validate(
+			$request,
+			[
+				'title'=>'required|min:2',
+				'text'=>'required|min:5'
+			]);
 
 		$post->title = $request->title;
 		$post->text = $request->text;

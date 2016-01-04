@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>
-		@yield('title', 'Translate')
+		@yield('title', 'Translate - A Gender Transition App')
 	</title>
 	<meta charset='utf-8'>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" rel="stylesheet">

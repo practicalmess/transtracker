@@ -30,7 +30,7 @@
 			<option value="Other">Other</option>
 		</select>
 		<br>
-		<label for="date">Date</label>
+		<label for="date">Date (mm/dd/yyyy)</label>
 		<input type="text" id="datepicker" name="date" class="form-control">
 		<br>
 		<label for="description">Description</label>

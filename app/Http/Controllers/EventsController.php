@@ -23,7 +23,10 @@ class EventsController extends Controller {
 
 		$this->validate(
 			$request,
-			['date' => 'date_format:m/d/Y']
+			[
+				'date' => 'required|date_format:m/d/Y',
+				'description' =>'required|min:5'
+			]
 			);
 		$type = $request->type;
 		if($type=='Coming Out') {
@@ -56,9 +59,6 @@ class EventsController extends Controller {
 		return redirect('/milestones');
 	}
 
-	public function postDelete() {
-		return 'Milestone deleted.';
-	}
 
 	public function getEdit($id = null) {
 		$event = \App\Milestone::find($id);
@@ -80,6 +80,14 @@ class EventsController extends Controller {
 	public function postEdit(Request $request) {
 		$event = \App\Milestone::find($request->id);
 
+		$this->validate(
+			$request,
+			[
+				'date' => 'required|date_format:m/d/Y',
+				'description' =>'required|min:5'
+			]
+			);
+
 		$event->type = $request->type;
 		$event->date = $request->date;
 		$event->description = $request->description;
@@ -87,6 +95,32 @@ class EventsController extends Controller {
 		$event->save();
 
 		\Session::flash('flash_message','Milestone successfully edited!');
+		return redirect('/milestones');
+	}
+
+	public function getDelete($id = null) {
+		$event = \App\Milestone::find($id);
+		$user = \Auth::user();
+
+		if(is_null($event)) {
+			\Session::flash('flash_error','Milestone not found!');
+			return redirect('/milestones');
+		}
+
+		if($event->user_id != $user->id) {
+			\Session::flash('flash_error','Access denied');
+			return redirect('/milestones');
+		}
+
+		
+		return view('events.delete')->with('event', $event);
+	}
+
+	public function postDelete(Request $request) {
+		$event = \App\Milestone::find($request->id);
+		$event->delete();
+
+		\Session::flash('flash_message', 'Milestone deleted.');
 		return redirect('/milestones');
 	}
 

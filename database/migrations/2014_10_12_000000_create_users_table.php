@@ -20,6 +20,11 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
+            //Profile columns
+            $table->string('birthday');
+            $table->string('gender');
+            $table->string('pronouns');
+
             $table->softDeletes();
         });
     }
