@@ -1,3 +1,4 @@
 #Project 4 - Gender Transition Tracker
 
-##Details to come
+##Purpose
+A tool to allow (currently exclusively private) blogging and tracking of life milestones, specifically geared toward the process of gender transition.
