@@ -31,6 +31,7 @@ class BlogController extends Controller {
 
 		$user = \Auth::user();
 		$userId = $user->id;
+		$date = $request->input('date');
 
 		$post = new \App\Post();
 		$post->title = $request->title;
