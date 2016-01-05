@@ -1,5 +1,13 @@
 @extends('layouts.blog')
 
+@section('head')
+	<script>
+	  $(function() {
+	    $( "#datepicker" ).datepicker();
+	  });
+ 	 </script>
+@stop
+
 @section('content')
 	<h2>New Post</h2>
 
