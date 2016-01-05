@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
 
             # The rest of the fields...
             $table->string('title');
-            $table->date('date');
+            $table->string('date');
             $table->text('text');
 
             $table->softDeletes();
