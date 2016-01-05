@@ -6,7 +6,7 @@ A tool to allow (currently exclusively private) blogging and tracking of life mi
 ##Function
 The three main functions and their abilities (at this time) are as follows:
 * User authentication  
-** New user creation  
+    * New user creation  
 ** Login and log out  
 * Private blogging  
 ** Creating new blog posts
