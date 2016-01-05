@@ -15,6 +15,9 @@
 		<input type="hidden" value="{{ csrf_token() }}" name="_token">
 		<input type="text" name="title" placeholder="Title" class="form-control">
 		<br>
+		<label for="date">Date (mm/dd/yyyy)</label>
+		<input type="text" id="datepicker" name="date" class="form-control">
+		<br>
 		<textarea name="text" class="form-control blog-post"></textarea>
 		<br>
 		<input type="submit" class="btn btn-primary" value="Post!">

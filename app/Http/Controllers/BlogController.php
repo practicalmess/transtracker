@@ -34,7 +34,7 @@ class BlogController extends Controller {
 
 		$post = new \App\Post();
 		$post->title = $request->title;
-		$post->date = date('Y-m-d');
+		$post->date = $request->date;
 		$post->text = $request->text;
 		$post->user_id = $userId;
 
