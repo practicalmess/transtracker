@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
 	    $user->email = 'jill@harvard.edu';
 	    $user->password = \Hash::make('helloworld');
 	    //User profile columns
-	    $user->birthday = 1990-05-10;
+	    $user->birthday = Carbon\Carbon::now()->subDays(4)->subYears(21);
 	    $user->gender = 'Woman';
 	    $user->pronouns = "she/her";
 
@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
 	    $user->password = \Hash::make('helloworld');
 
 	    //User profile columns
-	    $user->birthday = 1983-10-21;
+	    $user->birthday = Carbon\Carbon::now()->subDays(20)->subYears(28);
 	    $user->gender = 'Man';
 	    $user->pronouns = "he/him";
 
