@@ -27,7 +27,7 @@
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	    	@if(Auth::check())
-		    	<li class="navbar-text"><strong>Hi, {{\Auth::user()->name}}!</strong></li>
+		    	<li class="navbar-text"><strong>Hi, <a href="/profile">{{\Auth::user()->name}}</a>!</strong></li>
 		    	<li><a href="/logout">Sign out</a></li>
 			@else
 		    	<li><a href="/login">Sign in</a></li>

@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             //Profile columns
-            $table->string('birthday');
+            $table->date('birthday');
             $table->string('gender');
             $table->string('pronouns');
 
