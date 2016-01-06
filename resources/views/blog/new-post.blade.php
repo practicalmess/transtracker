@@ -5,9 +5,6 @@
 	  $(function() {
 	    $( "#datepicker" ).datepicker();
 	  });
-
-	  document.getElementById('datePicker').value = new Date().toDateInputValue();
-	  });
  	</script>
 @stop
 

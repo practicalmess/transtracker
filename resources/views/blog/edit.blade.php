@@ -16,6 +16,9 @@
 		<input type="hidden" name="id" value="{{$post->id}}">
 		<input type="text" name="title" value="{{$post->title}}" class="form-control">
 		<br>
+		<label for="date">Date (mm/dd/yyyy)</label>
+		<input type="text" id="datepicker" name="date" class="form-control">
+		<br>
 		<textarea name="text" class="form-control blog-post">{{$post->text}}</textarea>
 		<br>
 		<input type="submit" class="btn btn-primary" value="Save">
