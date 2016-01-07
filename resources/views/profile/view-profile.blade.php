@@ -19,7 +19,7 @@
 				?>
 			</script>
 			<!--Display birthday in readable format-->
-			@if ($bd->year != '0000')
+			@if ($bd->year != "-0001")
 				{{$bd->toFormattedDateString()}}
 			@else
 				<em>Empty</em>
