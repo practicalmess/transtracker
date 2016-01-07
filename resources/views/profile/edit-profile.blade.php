@@ -27,9 +27,9 @@
 		<label for="birthday">Birthday (mm/dd/yyyy):</label>
 		<input type="text" id="datepicker" name="birthday" value="{{$user->birthday}}" class="form-control">
 		<br>
-		<!--<label for="gender">Gender:</label>
-		<input type="text" name="gender" class="form-control">
-		<br>-->
+		<label for="gender">Gender:</label>
+		<input type="text" name="gender" placeholder="ex. she/her/hers" class="form-control">
+		<br>
 		<input type="submit" class="btn btn-primary" value="Save">
 	</form>
 

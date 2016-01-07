@@ -10,7 +10,7 @@
 			{{$user->name}}
 		</div>
 		<div class="row">
-			<strong>Birthday:</strong><br>
+			<strong>Birthday:  </strong>
 			<!--Convert birthday to display in a more human-readable format-->
 			<script>
 				<?php
@@ -26,12 +26,20 @@
 			@endif
 		</div>
 		<div class="row">
-			<strong>Gender:</strong><br>
-			{{$user->gender}}
+			<strong>Gender:  </strong>
+			@if ($user->gender != "")
+				{{$user->gender}}
+			@else
+				<em>Empty</em>
+			@endif
 		</div>
 		<div class="row">
-			<strong>Pronouns:</strong><br>
-			{{$user->pronouns}}
+			<strong>Pronouns:  </strong>
+			@if ($user->pronouns != "")
+				{{$user->pronouns}}
+			@else
+				<em>Empty</em>
+			@endif
 		</div>
 	</div>
 @stop
