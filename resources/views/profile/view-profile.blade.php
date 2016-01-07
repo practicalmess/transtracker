@@ -14,9 +14,10 @@
 			<script>
 				<?php
 					$bd = Carbon\Carbon::parse($user->birthday);
-					echo $bd->year;
+					//echo $bd->year;
 				?>
 			</script>
+			{{$bd->year}}
 		</div>
 		<div class="row">
 			<strong>Gender:</strong><br>
