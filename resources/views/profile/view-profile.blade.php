@@ -14,7 +14,7 @@
 			<script>
 				<?php
 					$bd = Carbon\Carbon::parse($user->birthday);
-					echo $bd->toFormattedDateString();
+					echo $bd->year;
 				?>
 			</script>
 		</div>
