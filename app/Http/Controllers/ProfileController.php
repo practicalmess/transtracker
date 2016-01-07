@@ -23,5 +23,10 @@ class ProfileController extends Controller {
 		$user = \Auth::user();
 
 		$user->name = $request->name;
+
+		$user->save();
+
+		\Session::flash('flash_message','Profile successfully edited!');
+		return redirect('/profile');
 	}
 }
