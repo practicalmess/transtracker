@@ -15,11 +15,13 @@
 			<script>
 				<?php
 					$bd = Carbon\Carbon::parse($user->birthday);
-					//echo $bd->year;
+
 				?>
 			</script>
 			<!--Display birthday in readable format-->
-			{{$bd->toFormattedDateString()}}
+			@if ($bd->year === int(0000))
+				{{$bd->toFormattedDateString()}}
+			@endif
 		</div>
 		<div class="row">
 			<strong>Gender:</strong><br>
