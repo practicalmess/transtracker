@@ -17,7 +17,8 @@
 					//echo $bd->year;
 				?>
 			</script>
-			{{$bd->year}}
+			<!--Display birthday in readable format-->
+			{{$bd->toFormattedDateString()}}
 		</div>
 		<div class="row">
 			<strong>Gender:</strong><br>
