@@ -12,6 +12,11 @@
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     @yield('head')
 </head>
+
+<header>
+	@yield('header')
+</header>
+
 <body>
 
 	<nav class="navbar navbar-default">
@@ -47,10 +52,6 @@
         {{ \Session::get('flash_error') }}
     </div>
     @endif
-
-	<header>
-		@yield('header')
-	</header>
 
 
 
