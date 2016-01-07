@@ -48,6 +48,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     //User profile routes
     Route::get('/profile', 'ProfileController@getProfile');
+    Route::get('/profile/edit', 'ProfileController@getEdit');
+    Route::post('/profile/edit', 'ProfileController@postEdit');
 });
 
 

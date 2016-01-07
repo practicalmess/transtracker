@@ -11,6 +11,8 @@ body {
 	width: 100%;
 }*/
 
+/*Blog/Timeline*/
+
 textarea.blog-post {
 	height: 210px;
 }
@@ -21,6 +23,15 @@ h3.panel-title {
 	font-size:1.6em;
 	padding-bottom: 10px;
 }
+
+p.timeline {
+	border: 1px solid #ddd;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 5px;
+}
+
+/*Navigation*/
 
 .nav-tabs>li {
 	border: 1px solid #ddd;
@@ -44,9 +55,8 @@ h3.panel-title {
 	padding: 10px 5px;
 }
 
-p.timeline {
-	border: 1px solid #ddd;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	padding: 5px;
+/*Profile*/
+
+.profile {
+	margin: 0 0 1em 3em;
 }

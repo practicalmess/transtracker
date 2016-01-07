@@ -9,12 +9,19 @@ class ProfileController extends Controller {
 	
 	public function getProfile() {
 		$user = \Auth::user();
-		/*$userId = $user->id;
-		$userName = $user->name;
-		$birthday = $user->birthday;
-		$gender = $user->gender;
-		$pronouns = $user->pronouns;*/
 
 		return view('profile.view-profile')->with('user', $user);
+	}
+
+	public function getEdit() {
+		$user = \Auth::user();
+
+		return view('profile.edit-profile')->with('user', $user);
+	}
+
+	public function postEdit(Request $request) {
+		$user = \Auth::user();
+
+		$user->name = $request->name;
 	}
 }

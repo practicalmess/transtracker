@@ -2,6 +2,7 @@
 
 @section('content')
 	<h2>Your Profile</h2>
+	<a href="/profile/edit" class="btn btn-primary" role="button">Edit</a>
 
 	<div class="profile">
 		<div class="row">
