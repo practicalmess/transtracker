@@ -23,11 +23,11 @@ class UsersTableSeeder extends Seeder
 
 	    $user->save();
 
+	    //Necessary user columns
 	    $user = \App\User::firstOrCreate(['email' => 'jamal@harvard.edu']);
 	    $user->name = 'Jamal';
 	    $user->email = 'jamal@harvard.edu';
 	    $user->password = \Hash::make('helloworld');
-
 	    //User profile columns
 	    $user->birthday = Carbon\Carbon::now()->subDays(20)->subYears(28);
 	    $user->gender = 'Man';

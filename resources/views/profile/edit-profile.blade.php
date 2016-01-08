@@ -1,13 +1,5 @@
 @extends('layouts.profile')
 
-@section('head')
-	<script>
-	  $(function() {
-	    $( "#datepicker" ).datepicker();
-	  });
- 	</script>
-@stop
-
 @section('content')
 	<h2>Edit Profile</h2>
 
@@ -25,12 +17,14 @@
 		<input type="text" name="name" value="{{$user->name}}" class="form-control">
 		<br>
 		<label for="birthday">Birthday (mm/dd/yyyy):</label>
-		<input type="text" id="datepicker" name="birthday" value="{{$user->birthday}}" class="form-control">
+		<input type="text" name="birthday" value="{{$user->birthday}}" class="form-control">
 		<br>
 		<label for="gender">Gender:</label>
-		<input type="text" name="gender" placeholder="ex. she/her/hers" class="form-control">
+		<input type="text" name="gender" value="{{$user->gender}}" class="form-control">
 		<br>
-		<input type="submit" class="btn btn-primary" value="Save">
+		<input type="text" name="pronouns" placeholder="ex. she/her/hers" value="{{$user->pronouns}}" class="form-control">
+		<br>
+		<input type="submit" class="btn btn-success" value="Save">
 		<a href="/profile" class="btn btn-info" role="button">Cancel</a>
 	</form>
 
