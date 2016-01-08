@@ -35,13 +35,13 @@
 	    		<!-- Check if it is user's bithday -->
 		    	<script>
 		    	<?php
-		    		$bd = \Auth::user()->birthday;
-		    		$today = Carbon\Carbon::today();
-		    		if ($bd->isBirthday($today)) {
+		    		$bd = Carbon\Carbon::parse(\Auth::user()->birthday);
+		    		/*if ($bd->isBirthday($today)) {
 		    			$message = "Happy birthday, ";
 		    		} else {
 		    			$message = "Not birthday, ";
-		    		}
+		    		}*/
+		    		$message = $bd->year;
 		    	?>
 		    	</script>
 				<!--Display message based on whether it is user's birthday-->
