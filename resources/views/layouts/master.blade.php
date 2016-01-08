@@ -32,11 +32,20 @@
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	    	@if(Auth::check())
-		    	<li class="navbar-text"><strong>
-		    		@if({{\Auth::user()->birthday}} == {{Carbon\Carbon::today()}})
-		    		Happy birthday,
-					@else
-					Hi,
+	    		<!-- Check if it is user's bithday -->
+		    	<script>
+		    	<?php
+		    	use Carbon\Carbon;
+		    		$bd = \Auth::user()->birthday;
+		    		if ($bd->isToday()) {
+		    			$message = "Happy birthday, ";
+		    		} else {
+		    			$message = "Not birthday, ";
+		    		}
+		    	?>
+		    	</script>
+				<!--Display message based on whether it is user's birthday-->
+				{{$message}}
 		    	<a href="/profile">{{\Auth::user()->name}}</a>!</strong></li>
 		    	<li><a href="/logout">Sign out</a></li>
 			@else
