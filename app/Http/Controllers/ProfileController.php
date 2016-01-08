@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request; //Required to allow 'Request' type objects
+use Carbon\Carbon;
 
 class ProfileController extends Controller {
 	
@@ -23,7 +24,7 @@ class ProfileController extends Controller {
 		$user = \Auth::user();
 
 		$bd = $request->birthday;
-		$bdFormatted = Carbon\Carbon::createFromFormat('m/d/Y', $bd);
+		$bdFormatted = Carbon::createFromFormat('m/d/Y', $bd);
 
 		$user->name = $request->name;
 		$user->birthday = $bdFormatted;
