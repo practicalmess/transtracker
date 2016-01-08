@@ -37,7 +37,7 @@
 		    	<?php
 		    		$bd = \Auth::user()->birthday;
 		    		$today = Carbon\Carbon::today();
-		    		if ($today->isBirthday($bd)) {
+		    		if ($bd->isBirthday($today)) {
 		    			$message = "Happy birthday, ";
 		    		} else {
 		    			$message = "Not birthday, ";
