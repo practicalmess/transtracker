@@ -23,9 +23,10 @@ class ProfileController extends Controller {
 		$user = \Auth::user();
 
 		$bd = $request->birthday;
+		$bdFormatted = DateTime::createFromFormat('m/d/Y', $bd);
 
 		$user->name = $request->name;
-		$user->birthday = $request-> Carbon::createFromFormat('n/d/Y', $bd);
+		$user->birthday = $request->;
 		$user->gender = $request->gender;
 		$user->pronouns = $request->pronouns;
 
