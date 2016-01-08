@@ -46,7 +46,7 @@
 		    	</script>
 				<!--Display message based on whether it is user's birthday-->
 				<li><strong>
-					{{$message}}
+					{{$message or 'Problem! '}}
 			    	<a href="/profile">{{\Auth::user()->name}}</a>!
 			    </strong></li>
 		    	<li><a href="/logout">Sign out</a></li>
