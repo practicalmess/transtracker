@@ -35,7 +35,6 @@
 	    		<!-- Check if it is user's bithday -->
 		    	<script>
 		    	<?php
-		    	use Carbon\Carbon;
 		    		$bd = \Auth::user()->birthday;
 		    		if ($bd->isToday()) {
 		    			$message = "Happy birthday, ";
