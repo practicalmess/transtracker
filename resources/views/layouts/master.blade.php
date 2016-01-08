@@ -37,12 +37,11 @@
 		    	<?php
 		    		$bd = Carbon\Carbon::parse(\Auth::user()->birthday);
 		    		$today = Carbon\Carbon::parse(Carbon\Carbon::today());
-		    		/*if () {
+		    		if ($bd->day==$today->day  && $bd->month==$today->month) {
 		    			$message = "Happy birthday, ";
 		    		} else {
 		    			$message = "Not birthday, ";
-		    		}*/
-		    		$message = $today->year;
+		    		}
 		    	?>
 		    	</script>
 				<!--Display message based on whether it is user's birthday-->
