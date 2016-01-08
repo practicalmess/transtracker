@@ -41,7 +41,7 @@
 		    		} else {
 		    			$message = "Not birthday, ";
 		    		}*/
-		    		$message = "Hello, ";
+		    		$message = Carbon\Carbon::today();
 		    	?>
 		    	</script>
 				<!--Display message based on whether it is user's birthday-->
