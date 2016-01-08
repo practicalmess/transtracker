@@ -22,8 +22,10 @@ class ProfileController extends Controller {
 	public function postEdit(Request $request) {
 		$user = \Auth::user();
 
+		$bd = $request->birthday;
+
 		$user->name = $request->name;
-		$user->birthday = Carbon\Carbon::createFromFormat("n/d/Y", $request->birthday);
+		$user->birthday = $request-> Carbon\Carbon::createFromFormat('n/d/Y', $bd);
 		$user->gender = $request->gender;
 		$user->pronouns = $request->pronouns;
 

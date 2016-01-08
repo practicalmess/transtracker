@@ -31,6 +31,7 @@
 		<input type="text" name="gender" placeholder="ex. she/her/hers" class="form-control">
 		<br>
 		<input type="submit" class="btn btn-primary" value="Save">
+		<a href="/profile" class="btn btn-info" role="button">Cancel</a>
 	</form>
 
 @stop
