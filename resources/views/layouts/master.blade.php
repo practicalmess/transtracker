@@ -37,7 +37,7 @@
 		    	<?php
 		    		$bd = \Auth::user()->birthday;
 		    		$today = Carbon\Carbon::today();
-		    		if ($bd == $today) {
+		    		if ($today->isBirthday($bd)) {
 		    			$message = "Happy birthday, ";
 		    		} else {
 		    			$message = "Not birthday, ";
@@ -45,8 +45,10 @@
 		    	?>
 		    	</script>
 				<!--Display message based on whether it is user's birthday-->
-				{{$message}}
-		    	<a href="/profile">{{\Auth::user()->name}}</a>!</strong></li>
+				<li><strong>
+					{{$message}}
+			    	<a href="/profile">{{\Auth::user()->name}}</a>!
+			    </strong></li>
 		    	<li><a href="/logout">Sign out</a></li>
 			@else
 		    	<li><a href="/login">Sign in</a></li>
