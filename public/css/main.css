@@ -3,6 +3,11 @@ body {
 	margin: 0 auto;
 }
 
+#symbol {
+	width: 20%;
+	margin: 1em 40%;
+}
+
 /*Blog/Timeline*/
 
 textarea.blog-post {
