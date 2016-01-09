@@ -3,14 +3,6 @@ body {
 	margin: 0 auto;
 }
 
-/*.list-group-item {
-	display: inline-block;
-}
-
-.list-group-item:last-child {
-	width: 100%;
-}*/
-
 /*Blog/Timeline*/
 
 textarea.blog-post {
@@ -31,7 +23,15 @@ p.timeline {
 	padding: 5px;
 }
 
+.no-posts {
+	color: grey;
+}
+
 /*Navigation*/
+
+#greeting {
+	padding: 15px 10px;
+}
 
 .nav-tabs>li {
 	border: 1px solid #ddd;
@@ -59,4 +59,9 @@ p.timeline {
 
 .profile {
 	margin: 0 0 1em 3em;
+	font-size: 1.2em;
+}
+
+#edit-profile {
+	margin: 0 0 1.5em 2.5em;
 }

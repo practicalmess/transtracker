@@ -14,7 +14,7 @@
 </head>
 
 <header>
-	@yield('header')
+	<h1>Translate - A Gender Transition Tracking App</h1>
 </header>
 
 <body>
@@ -23,7 +23,7 @@
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="/">
-	       	<strong>Translate</strong>
+	       	<strong>Home</strong>
 	      </a>
 	    </div>
 	    <ul class="nav navbar-nav">
@@ -40,15 +40,18 @@
 		    		if ($bd->day==$today->day  && $bd->month==$today->month) {
 		    			$message = "Happy birthday, ";
 		    		} else {
-		    			$message = "Not birthday, ";
+		    			$message = "Hi, ";
 		    		}
 		    	?>
 		    	</script>
 				<!--Display message based on whether it is user's birthday-->
-				<li><strong>
-					{{$message or 'Problem! '}}
-			    	<a href="/profile">{{\Auth::user()->name}}</a>!
-			    </strong></li>
+				<li id="greeting">
+					<strong>
+					{{$message}}
+					{{\Auth::user()->name}}!
+			    	</strong>
+				</li>
+			    <li><a href="/profile">Profile</a></li>
 		    	<li><a href="/logout">Sign out</a></li>
 			@else
 		    	<li><a href="/login">Sign in</a></li>
