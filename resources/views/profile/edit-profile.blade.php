@@ -6,7 +6,7 @@
 	@if(count($errors) > 0)
         <ul class='errors'>
             @foreach ($errors->all() as $error)
-                <li><span class='glyphicon glyphicon-exclamation-sign'></span> {{ $error }}</li>
+                <li><span class='glyphicon glyphicon-exclamation-sign'></span> Birthday does not match the format 'm/d/yyyy'</li>
             @endforeach
         </ul>
     @endif
@@ -16,13 +16,13 @@
 		<label for="name">Name:</label>
 		<input type="text" name="name" value="{{$user->name}}" class="form-control">
 		<br>
-		<label for="birthday">Birthday (mm/dd/yyyy):</label>
+		<label for="birthday">Birthday (m/d/yyyy):</label>
 			<!--Convert birthday to display in a more human-readable format-->
 			<script>
 				<?php
 					$bd = Carbon\Carbon::parse($user->birthday);
 					if ($bd->year != "-0001") {
-						$bdDisplay = $bd->format('m/d/Y');
+						$bdDisplay = $bd->format('n/j/Y');
 					} else {
 						$bdDisplay = "";
 					}

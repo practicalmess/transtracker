@@ -20,14 +20,25 @@ class ProfileController extends Controller {
 		return view('profile.edit-profile')->with('user', $user);
 	}
 
+	//Save profile edits
 	public function postEdit(Request $request) {
 		$user = \Auth::user();
 
-		$bd = $request->birthday;
-		$bdFormatted = Carbon::createFromFormat('m/d/Y', $bd);
+		$this->validate (
+			$request,
+			[
+				'birthday'=>'date_format:n/j/Y'
+			]);
+
+		$bdFormatted = "";
+		if ($request->birthday != "") {
+			$bd = $request->birthday;
+			$bdFormatted = Carbon::createFromFormat('n/j/Y', $bd);
+		}
+			
+		$user->birthday = $bdFormatted;
 
 		$user->name = $request->name;
-		$user->birthday = $bdFormatted;
 		$user->gender = $request->gender;
 		$user->pronouns = $request->pronouns;
 
