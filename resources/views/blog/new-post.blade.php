@@ -29,7 +29,13 @@
 		<input type="text" name="title" placeholder="Title" value="{{old('title')}}" class="form-control">
 		<br>
 		<label for="date">Date (m/d/yyyy)</label>
-		<input type="text" id="datepicker" name="date" class="form-control">
+		<script> //Get current date and convert it to human readable format
+			<?php
+				$currentDate = Carbon\Carbon::now();
+				$dateDisplay = $currentDate->format('n/j/Y');
+			?>
+		</script>
+		<input type="text" id="datepicker" name="date" class="form-control" value="{{$dateDisplay}}">
 		<br>
 		<textarea name="text" class="form-control blog-post">{{old('text')}}</textarea>
 		<br>

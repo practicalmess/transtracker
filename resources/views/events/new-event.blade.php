@@ -14,7 +14,11 @@
 	@if(count($errors) > 0)
     <ul>
         @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
+            @if ($error != "The date does not match the format m/d/Y.")
+                <li><span class='glyphicon glyphicon-exclamation-sign'></span> {{ $error }}</li>
+            @else
+            	<li><span class='glyphicon glyphicon-exclamation-sign'></span> The date does not match the format "m/d/yyyy".</li>
+            @endif
         @endforeach
     </ul>
 	@endif
@@ -30,11 +34,17 @@
 			<option value="Other">Other</option>
 		</select>
 		<br>
-		<label for="date">Date (mm/dd/yyyy)</label>
-		<input type="text" id="datepicker" name="date" class="form-control">
+		<script> //Get current date and convert it to human readable format
+			<?php
+				$currentDate = Carbon\Carbon::now();
+				$dateDisplay = $currentDate->format('n/j/Y');
+			?>
+		</script>
+		<label for="date">Date (m/d/yyyy)</label>
+		<input type="text" id="datepicker" name="date" class="form-control" value="{{$dateDisplay}}">
 		<br>
 		<label for="description">Description</label>
-		<textarea name="description" class="form-control"></textarea>
+		<textarea name="description" class="form-control">{{old('description')}}</textarea>
 		<br>
 		<input type="submit" value="Post!" class="btn btn-primary">
 	</form>
