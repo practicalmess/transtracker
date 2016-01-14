@@ -26,7 +26,8 @@ class BlogController extends Controller {
 			$request,
 			[
 				'title'=>'required|min:2',
-				'text'=>'required|min:5'
+				'text'=>'required|min:5',
+				'date'=>'required|date_format:n/j/Y'
 			]);
 
 		$user = \Auth::user();
