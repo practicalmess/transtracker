@@ -13,11 +13,12 @@
     @yield('head')
 </head>
 
-<header>
-	<h1>Translate - A Gender Transition Tracking App</h1>
-</header>
+
 
 <body>
+	<header>
+		<h1>Translate - A Gender Transition Tracking App</h1>
+	</header>
 
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">

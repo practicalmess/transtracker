@@ -5,5 +5,5 @@
 
 	<p>Functions I hope to add in the future include the ability to post pictures (to see how you've changed and to celebrate where you are), the ability to make individual posts visible to others (with a range of privacy settings), and the ability to integrate with crowdfunding platforms (to let friends and family help pay for the more expensive aspects of transition).</p>
 
-	<img src="images/trans-symbol.png" id="symbol">
+	<img src="images/trans-symbol.png" id="symbol" alt="A combination of the traditional 'male' and 'female' symbols, a commonly accepted symbol of being transgender.">
 @stop
