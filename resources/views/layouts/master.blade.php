@@ -26,12 +26,13 @@
 	       	<strong>Home</strong>
 	      </a>
 	    </div>
+
+	  @if(Auth::check()) <!--Check if user is logged in-->
 	    <ul class="nav navbar-nav">
 	    	<li><a href="/blog">Blog</a></li>
 	    	<li><a href="/milestones">Timeline</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
-	    	@if(Auth::check())
 	    		<!-- Check if it is user's bithday -->
 		    	<script>
 		    	<?php
@@ -53,11 +54,13 @@
 				</li>
 			    <li><a href="/profile">Profile</a></li>
 		    	<li><a href="/logout">Sign out</a></li>
-			@else
+		   </ul>
+	  @else
+	  	<ul class="nav navbar-nav navbar-right">
 		    	<li><a href="/login">Sign in</a></li>
 		    	<li><a href="/register">New User</a></li>
-	    	@endif
-	    </ul>
+		</ul>
+	  @endif
 	  </div>
 	</nav>
 
