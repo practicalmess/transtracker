@@ -28,7 +28,7 @@
         </div>
 
         <div class='form-group'>
-            <label for='password'>Password</label>
+            <label for='password'>Password (must be at least 6 characters)</label>
             <input type='password' name='password' id='password'>
         </div>
 
