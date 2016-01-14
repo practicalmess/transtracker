@@ -14,19 +14,24 @@
 	@if(count($errors) > 0)
         <ul class='errors'>
             @foreach ($errors->all() as $error)
-                <li><span class='glyphicon glyphicon-exclamation-sign'></span> {{ $error }}</li>
+            	@if ($error != "The date does not match the format n/j/Y.")
+                	<li><span class='glyphicon glyphicon-exclamation-sign'></span> {{ $error }}</li>
+            	@else
+            		<li><span class='glyphicon glyphicon-exclamation-sign'></span> The date does not match the format "m/d/yyyy".</li>
+            	@endif
             @endforeach
         </ul>
     @endif
 
 	<form action="/blog/publish-post" method="POST">
 		<input type="hidden" value="{{ csrf_token() }}" name="_token">
-		<input type="text" name="title" placeholder="Title" class="form-control">
+	
+		<input type="text" name="title" placeholder="Title" value="{{old('title')}}" class="form-control">
 		<br>
-		<label for="date">Date (mm/dd/yyyy)</label>
+		<label for="date">Date (m/d/yyyy)</label>
 		<input type="text" id="datepicker" name="date" class="form-control">
 		<br>
-		<textarea name="text" class="form-control blog-post"></textarea>
+		<textarea name="text" class="form-control blog-post">{{old('text')}}</textarea>
 		<br>
 		<input type="submit" class="btn btn-primary" value="Post!">
 	</form>
