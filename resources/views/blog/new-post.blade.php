@@ -1,12 +1,5 @@
 @extends('layouts.blog')
 
-@section('head')
-	<script>
-	  $(function() {
-	    $( "#datepicker" ).datepicker();
-	  });
- 	</script>
-@stop
 
 @section('content')
 	<h2>New Post</h2>
@@ -35,7 +28,7 @@
 				$dateDisplay = $currentDate->format('n/j/Y');
 			?>
 		</script>
-		<input type="text" id="datepicker" name="date" class="form-control" value="{{$dateDisplay}}">
+		<input type="text" name="date" class="form-control" value="{{$dateDisplay}}">
 		<br>
 		<textarea name="text" class="form-control blog-post">{{old('text')}}</textarea>
 		<br>
