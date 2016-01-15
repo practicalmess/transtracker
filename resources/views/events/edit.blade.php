@@ -7,7 +7,11 @@
 	@if(count($errors) > 0)
     <ul>
         @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
+            @if ($error != "The date does not match the format n/j/Y.")
+                <li><span class='glyphicon glyphicon-exclamation-sign'></span> {{ $error }}</li>
+            @else
+            	<li><span class='glyphicon glyphicon-exclamation-sign'></span> The date does not match the format "m/d/yyyy".</li>
+            @endif
         @endforeach
     </ul>
 	@endif
