@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request; //Required to allow 'Request' type objects
+use Carbon\Carbon;
 
 class BlogController extends Controller {
 	
@@ -27,15 +28,18 @@ class BlogController extends Controller {
 			[
 				'title'=>'required|min:2',
 				'text'=>'required|min:5',
-				'date'=>'required|date_format:m/d/Y'
+				'date'=>'required|date_format:n/j/Y'
 			]);
 
 		$user = \Auth::user();
 		$userId = $user->id;
 
+		$date = $request->date;
+		$dateFormatted = Carbon::createFromFormat('n/j/Y', $date);
+
 		$post = new \App\Post();
 		$post->title = $request->title;
-		$post->date = $request->date;
+		$post->date = $dateFormatted;
 		$post->text = $request->text;
 		$post->user_id = $userId;
 
@@ -112,9 +116,14 @@ class BlogController extends Controller {
 			$request,
 			[
 				'title'=>'required|min:2',
-				'text'=>'required|min:5'
+				'text'=>'required|min:5',
+				'date'=>'required|date_format:n/j/Y'
 			]);
 
+		$date = $request->date;
+		$dateFormatted = Carbon::createFromFormat('n/j/Y', $date);
+
+		$post->date = $dateFormatted;
 		$post->title = $request->title;
 		$post->text = $request->text;
 

@@ -1,12 +1,5 @@
 @extends('layouts.milestones')
 
-@section('head')
-	<script>
-	  $(function() {
-	    $( "#datepicker" ).datepicker();
-	  });
- 	 </script>
-@stop
 
 @section('content')
 	<h2>New Milestone</h2>
@@ -53,7 +46,13 @@
 		</select>
 		<br>
 		<label for="date">Date</label>
-		<input type="text" id="datepicker" name="date" value="{{$event->date}}" class="form-control">
+		<script>
+			<?php
+				$date = Carbon\Carbon::parse($event->date);
+				$dateFormatted = $date->format('n/j/Y');
+			?>
+		</script>
+		<input type="text" name="date" value="{{$dateFormatted}}" class="form-control">
 		<br>
 		<label for="description">Description</label>
 		<textarea name="description" class="form-control">{{$event->description}}</textarea>

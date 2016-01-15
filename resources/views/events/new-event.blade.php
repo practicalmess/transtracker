@@ -1,12 +1,5 @@
 @extends('layouts.milestones')
 
-@section('head')
-	<script>
-	  $(function() {
-	    $( "#datepicker" ).datepicker();
-	  });
- 	 </script>
-@stop
 
 @section('content')
 	<h2>New Milestone</h2>
@@ -41,7 +34,7 @@
 			?>
 		</script>
 		<label for="date">Date (m/d/yyyy)</label>
-		<input type="text" id="datepicker" name="date" class="form-control" value="{{$dateDisplay}}">
+		<input type="text" name="date" class="form-control" value="{{$dateDisplay}}">
 		<br>
 		<label for="description">Description</label>
 		<textarea name="description" class="form-control">{{old('description')}}</textarea>

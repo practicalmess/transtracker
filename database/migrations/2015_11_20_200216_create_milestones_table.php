@@ -19,7 +19,7 @@ class CreateMilestonesTable extends Migration
             # The rest of the fields...
             $table->string('type');
             $table->string('glyph');
-            $table->string('date');
+            $table->date('date');
             $table->text('description');
 
             $table->softDeletes();

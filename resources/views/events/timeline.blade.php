@@ -11,7 +11,13 @@
 					<span class="glyphicon glyphicon-{{$event->glyph}}" aria-hidden="true"></span>
 					{{$event->type}}
 				</li>
-				<li role="presentation">{{$event->date}}</li>
+				<!--Allow post date to display in more human readable format-->
+				<script>
+					<?php
+						$date = Carbon\Carbon::parse($event->date);
+					?>
+				</script>
+				<li role="presentation">{{$date->format('n/j/Y')}}</li>
 				<li role="presentation"><a href="/milestones/edit/{{$event->id}}">Edit</a></li>
 				<li role="presentation"><a href="/milestones/delete/{{$event->id}}">Delete</a></li>
 			</ul>

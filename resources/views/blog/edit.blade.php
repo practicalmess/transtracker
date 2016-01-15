@@ -1,12 +1,5 @@
 @extends('layouts.blog')
 
-@section('head')
-	<script>
-	  $(function() {
-	    $( "#datepicker" ).datepicker();
-	  });
- 	</script>
-@stop
 
 @section('content')
 	<h2>Edit Post</h2>
@@ -29,7 +22,13 @@
 		<input type="text" name="title" value="{{$post->title}}" class="form-control">
 		<br>
 		<label for="date">Date (m/d/yyyy)</label>
-		<input type="text" id="datepicker" name="date" class="form-control" value="{{$post->date}}">
+		<script>
+			<?php
+				$date = Carbon\Carbon::parse($post->date);
+				$dateFormatted = $date->format('n/j/Y');
+			?>
+		</script>
+		<input type="text" name="date" class="form-control" value="{{$dateFormatted}}">
 		<br>
 		<textarea name="text" class="form-control blog-post">{{$post->text}}</textarea>
 		<br>

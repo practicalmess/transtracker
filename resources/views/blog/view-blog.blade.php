@@ -13,7 +13,14 @@
 					<a href="/blog/delete/{{$post->id}}" class="btn btn-danger">Delete</a>
 				</div>
 				<div class="panel-body">
-					<span class="post-date">{{$post->date}}</span>
+				<!--Allow post date to display in more human readable format-->
+				<script>
+					<?php
+						$date = Carbon\Carbon::parse($post->date);
+					?>
+				</script>
+					<!--Display date in human readable format-->
+					<span class="post-date">{{$date->format('n/j/Y')}}</span>
 					<br>
 					{{ str_limit($post->text, 400) }}
 				</div>

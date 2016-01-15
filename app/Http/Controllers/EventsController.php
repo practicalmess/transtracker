@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request; //Required to allow 'Request' type objects
+use Carbon\Carbon;
 
 class EventsController extends Controller {
 	public function getMilestones() {
@@ -24,7 +25,7 @@ class EventsController extends Controller {
 		$this->validate(
 			$request,
 			[
-				'date' => 'required|date_format:m/d/Y',
+				'date' => 'required|date_format:n/j/Y',
 				'description' =>'required|min:5'
 			]
 			);
@@ -40,8 +41,8 @@ class EventsController extends Controller {
 		} else {
 			$glyph='sunglasses';
 		}
-		$date = $request->input('date');
-		$desc = $request->input('description');
+		$date = $request->date;
+		$dateFormatted = Carbon::createFromFormat('n/j/Y', $date);
 
 		$user = \Auth::user();
 		$userId = $user->id;
@@ -49,7 +50,7 @@ class EventsController extends Controller {
 		$event = new \App\Milestone();
 		$event->type = $type;
 		$event->glyph = $glyph;
-		$event->date = $request->date;
+		$event->date = $dateFormatted;
 		$event->description = $request->description;
 		$event->user_id = $userId;
 
@@ -83,13 +84,15 @@ class EventsController extends Controller {
 		$this->validate(
 			$request,
 			[
-				'date' => 'required|date_format:m/d/Y',
+				'date' => 'required|date_format:n/j/Y',
 				'description' =>'required|min:5'
 			]
 			);
+		$date = $request->date;
+		$dateFormatted = Carbon::createFromFormat('n/j/Y', $date);
 
 		$event->type = $request->type;
-		$event->date = $request->date;
+		$event->date = $dateFormatted;
 		$event->description = $request->description;
 
 		$event->save();
